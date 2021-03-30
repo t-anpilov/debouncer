@@ -16,7 +16,7 @@ function input($event: any) {
   console.log(`value: ${elem.value}`)
 }
 
-const debounceForInput = debounce(input, 200)
+const debounceForInput = debounce(input, 250)
 
 const textField: HTMLElement = document.getElementById('textField')
 textField.addEventListener('input', debounceForInput)
