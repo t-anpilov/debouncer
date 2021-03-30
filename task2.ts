@@ -1,7 +1,7 @@
 const debounce = (func: Function, timeDelay: number) => {
   let timeout: number
   
-  return (event: any) => {
+  return (event: Event) => {
     const later = () => {
       func(event);
     }
@@ -11,12 +11,16 @@ const debounce = (func: Function, timeDelay: number) => {
   }
 }
 
-function input($event: any) {
-  let elem: HTMLInputElement = $event.target
-  console.log(`value: ${elem.value}`)
+function input($event: KeyboardEvent) {
+  let elem = $event.target as HTMLInputElement
+  if (elem) {
+    console.log(`value: ${elem.value}`)
+  }
 }
 
 const debounceForInput = debounce(input, 250)
 
-const textField: HTMLElement = document.getElementById('textField')
-textField.addEventListener('input', debounceForInput)
+const textField: HTMLElement | null = document.getElementById('textField')
+if (textField) {
+  textField.addEventListener('input', debounceForInput)
+}

@@ -1,3 +1,4 @@
+"use strict";
 var debounce = function (func, timeDelay) {
     var timeout;
     return function (event) {
@@ -10,8 +11,12 @@ var debounce = function (func, timeDelay) {
 };
 function input($event) {
     var elem = $event.target;
-    console.log("value: " + elem.value);
+    if (elem) {
+        console.log("value: " + elem.value);
+    }
 }
-var debounceForInput = debounce(input, 200);
+var debounceForInput = debounce(input, 250);
 var textField = document.getElementById('textField');
-textField.addEventListener('input', debounceForInput);
+if (textField) {
+    textField.addEventListener('input', debounceForInput);
+}
