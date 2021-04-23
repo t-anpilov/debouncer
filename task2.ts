@@ -24,3 +24,6 @@ const textField: HTMLElement | null = document.getElementById('textField')
 if (textField) {
   textField.addEventListener('input', debounceForInput)
 }
+
+export { debounce }
+export { input }
